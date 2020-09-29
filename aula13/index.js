@@ -30,7 +30,7 @@ console.log(`Trocar todos os 'r' por '#': ${umaString.replace(/r/g, '#')}`);
 console.log(`O tamanho da string é: ${umaString.length}`);
 //slice pode usar valor negativo que pega o ultimo índice e subtrai pelo índice pesquisado
 console.log(`"Localizando" a palavra "rato" da string à partir do índice: ${umaString.slice(2,6)}`)
-//slice pode usar valor negativo que pega o ultimo índice e subtrai pelo índice pesquisado
+//slice pode usar valor negativo que pega o ultimo índice existente e subtrai pelo índice pesquisado
 console.log(`"Localizando" a palavra "roma" da string, voltando 5 índices do último: ${umaString.slice(-5,-1)}`)
 console.log(`"Localizando" a palavra "roma" da string, usando substring: ${umaString.substring(umaString.length - 5, umaString.length - 1)}`)
 console.log(`Colocar cada palavra em um array: ${umaString.split(' ')}`);

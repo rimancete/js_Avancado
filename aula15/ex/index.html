@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- doctype informa ao agente de usuário a versão do html que deve ser renderizada-->
+<html lang="pt-br">
+
+<head>
+    <meta charset='utf-8'>
+    <title>Curso Javascript Avançado</title>
+    <meta name="author" content="Osvaldo Costa">
+    <meta name="description" content="Página base para estudo e prática de programação">
+    <meta name="keywords" content="html5, css, javascript, tecnologia">
+    <!--Adicionar código nas tag scripts-->
+
+    <!--Adicionar arquivo javascript-->
+    <!--<script src="qualquer.js"></script>-->
+</head>
+
+<body>
+    <h1>Curso Programação Javascript - Avançado</h1>
+    <section>
+        <h2>Seu número é: <span id="num"></span></h2>
+        <div id="texto"></div>
+    </section>
+    <script>
+        /*
+        Pede um número ao usuário
+        Retorna:
+        <h1>seu número é: [num]</h1> 
+        Raiz quadrada
+        [num] é inteiro: 
+        [num] é NaN:
+        Arredonda [num] para baixo:
+        Arredonda [num] para cima:
+        [num] com duas casas decimais: 
+        */
+
+        (function () {
+            const num = Number(prompt('Digite um número'));
+           
+            var $num = document.getElementById('num');
+            var $calculos = document.querySelector('#texto');
+            $num.innerHTML += `${num}`
+            $calculos.innerHTML = `A raiz quadrada de <i>${num}</i> é: <b>${num ** 0.5}</b><br>`;
+            if (Number.isInteger(num)) {
+                $calculos.innerHTML += `${num} é inteiro? <b>SIM</b><br>`;
+            }
+            else {
+                $calculos.innerHTML += `${num} é inteiro? <b>NÃO</b><br>`;
+            }
+
+            if (!Number.isNaN(num)) {
+                $calculos.innerHTML += `${num} é NaN? <b>NÂO</b><br>`;
+                $calculos.innerHTML += `Arredondando <i>${num}</i> para baixo: <b>${Math.floor(num)}</b><br>`;
+                $calculos.innerHTML += `Arredondando <i>${num}</i> para cima: <b>${Math.ceil(num)}</b><br>`;
+                $calculos.innerHTML += `<i>${num}</i> com duas casas decimais: <b>${num.toFixed(2)}</b></br>`;
+            }
+            else {
+                $calculos.innerHTML += `${num} é NaN? <b>SIM</b><br>`;
+            }
+        })()
+    </script>
+</body>
+
+</html>
