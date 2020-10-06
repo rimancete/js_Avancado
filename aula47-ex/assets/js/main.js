@@ -12,7 +12,7 @@ Botão zerar
 */
 (function () {
     // referênciar botão iniciar e div container
-    const $btnStart = document.querySelector('.btn-start');
+    const btnStart = document.querySelector('.btn-start');
     let divContainer = document.querySelector('.container');
     // criar flag se timer está em execução ou não
     let timerIsOn = 0;
@@ -76,8 +76,8 @@ Botão zerar
         }));
         //escrevendo o timer no p
         p.appendChild(timer);
-        $btnStart.before(h2);
-        $btnStart.before(p);
+        btnStart.before(h2);
+        btnStart.before(p);
         return h2, p;
     }
     //função que pára o contador, seta a flag do timer para off e formata a fonte
