@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+:root{
+    --primary-color: rgb(172, 243, 234);
+    --btn-color-hover: rgb(146, 228, 203);
+}
+*{
+    box-sizing: border-box;
+    outline: none;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--primary-color);
+    font-family: 'Open sans', sans-serif;
+    line-height: 1.8em;
+    height: auto;
+    overflow: visible;
+}
+.container{
+    width: 40%;
+    background: white;
+    padding: 20px;
+    margin-top: 50px;
+    height: 100%;
+    border-radius: 2em;
+}
+input{
+    width: 100%;
+    display: block;
+    font-size: 1.5em;
+}
+.form-control input:focus{
+    border-radius: 1%;
+}
+.form-control{
+    height: 300px;
+}
+.calculator{
+    padding: 20px;
+    /*A cor de fundo vai de um cinza mais claro para um cinza mais escuro, de cima para baixo*/
+    background-image: linear-gradient(#b7b7b7, #9c9c9c);
+    border-radius: 5px;
+    /*Bordar "esfumaçada" utilizar box-shadow*/
+    box-shadow: 0 0 10px rgba(0,0,0,.8);
+    /*ajustar margem da calculadora*/
+    margin: 15px auto;
+    width: 300px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat(4, [col-start] 1fr [col-end]);
+    /* Setando que o tamanho do display(row) se adeque ao conteúdo */
+    grid-template-rows: auto 1fr [AC-end n7-start] 1fr [n7-end n4-start] 1fr [n4-end n1-start] 1fr [n1-end n0-start] 1fr [n0-end];
+    grid-gap: 10px;
+}
+button{
+    font-family: helvetica;
+    font-size: 22px;
+    cursor: default;
+}
+.display{
+    background: #ddd;
+    background-image: linear-gradient(to top,#eee 0%, #ddd 60%);
+    background-clip: border-box;
+    /* poderia fazer a bordar assim:
+    
+    border: 2px solid white;
+    border-bottom: none;
+    border-right: none;
+    
+    Mas fiz utilizando o box-shadow*/
+    box-shadow: inset 3px 2px 0 white;
+    /* Ajustando fonte e padding */
+    font-size: 35px;
+    text-align: right;
+    padding: 10px 12px 10px 12px;
+    /* Ajustado a margem entre o fundo do display e início dos botões */
+    margin-bottom: 15px;
+    grid-column: col-start 1 / col-end 4;
+    
+}
+.igual{
+    grid-row: n0-start / n0-end;
+    grid-column: col-start 4 / col-end 4;
+    background: #ccc;
+    border: none;
+    box-shadow: inset 2px 2px 0 white;
+}
+.zero{
+    background: #ccc;
+    box-shadow: inset 2px 2px 0 white;
+    border: none;
+    grid-column: col-start 1 / col-end 2;
+}
+.igual:hover, .zero:hover{
+    background: #c7c7c7;
+}
+.igual:active, .zero:active{
+    border: black 1px solid;
+}

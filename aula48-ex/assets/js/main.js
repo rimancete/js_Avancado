@@ -82,6 +82,7 @@
         const el = e.target;
         // se o botão apagar foi clicado
         if (el.classList.contains('apagar')){
+            //apaga o hr e o li
             el.nextElementSibling.remove();
             el.parentElement.remove();
             // NEW Salvar em JSON
