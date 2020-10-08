@@ -79,21 +79,19 @@ button{
     
 }
 .igual{
-    grid-row: n0-start / n0-end;
-    grid-column: col-start 4 / col-end 4;
     background: #ccc;
     border: none;
     box-shadow: inset 2px 2px 0 white;
 }
-.zero{
+.n0{
     background: #ccc;
     box-shadow: inset 2px 2px 0 white;
     border: none;
-    grid-column: col-start 1 / col-end 2;
+    
 }
-.igual:hover, .zero:hover{
+.igual:hover, .n0:hover{
     background: #c7c7c7;
 }
-.igual:active, .zero:active{
+.igual:active, .n0:active{
     border: black 1px solid;
 }

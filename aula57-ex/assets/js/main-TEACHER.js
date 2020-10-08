@@ -5,7 +5,6 @@
 
 - retirar 0 dos decimais
 - utilizar o '()'
-usando arrow function, o this mantem para o elemento que referenciei inicialmente
 */
 (function () {
     // referenciar container, display e botões
@@ -35,6 +34,7 @@ usando arrow function, o this mantem para o elemento que referenciei inicialment
     }
     // escutar clique do container
     $container.addEventListener('click', iniciaCalculo);
+
 
     /*####################
     ####### funções ######
@@ -77,10 +77,30 @@ usando arrow function, o this mantem para o elemento que referenciei inicialment
             
         }
         // armazena o botão clicado fo número, chama função que armazenará
-        if (!el.classList.contains('ac') && !el.classList.contains('p') && !el.classList.contains('x') && !el.classList.contains('b') && !el.classList.contains('mais') && !el.classList.contains('menos') && !el.classList.contains('evidencia') && !el.classList.contains('igual') && !el.classList.contains('apagar')){
+        if (el.classList.contains('num')){
+            if (el.textContent !== 0 && display.textContent === '0'){
+                display.textContent = '';
+                 return display.textContent = el.textContent;
+            }
+            display.textContent += el.textContent;
             return numero = armazenaNumeros(el);
-            // se não, chama funçõão que limpa o display, salva o valor atual do display e seta operador
-        } else{ return setaOperador(el)};
+        }
+        if (el.classList.contains(`decimal`)){
+            let num = display.textContent + '.';
+            const i = num.indexOf('.');
+            display.textContent = num;
+            if(num.indexOf('..') !== -1){
+                num = num.substr(0, num.length - 1);
+                return display.textContent = num;    
+            }
+            if  (num.lastIndexOf('.') > i){
+                num = num.substr(0, num.length - 1);
+                return display.textContent = num;
+            }
+            return display.textContent = num;
+    }
+         // se não, chama funçõão que limpa o display, salva o valor atual do display e seta operador
+         else{ return setaOperador(el)};
        
     }
     //função que limpa o valor do display
@@ -91,31 +111,8 @@ usando arrow function, o this mantem para o elemento que referenciei inicialment
         let nDisplay = Number(display.textContent);
         // se só houver o zero no display, limpa-o
         if (nDisplay = 0) return limpaDisplay();
-        // coloca no display os botões que são números e o decimal
-        const numeros = $container.querySelectorAll("button[class^='n'], button[class^='decimal']");
-        for (let i in numeros){
-            if (el.classList.contains(`n${i}`)){
-                if (display.textContent === '0'){
-                    display.textContent = '';
-                    return display.textContent += i;
-                }
-                return display.textContent += i;
-            }
-            if (el.classList.contains(`decimal`)){
-                let num = display.textContent + '.';
-                const i = num.indexOf('.');
-                display.textContent = num;
-                if(num.indexOf('..') !== -1){
-                    num = num.substr(0, num.length - 1);
-                    return display.textContent = num;    
-                }
-                if  (num.lastIndexOf('.') > i){
-                    num = num.substr(0, num.length - 1);
-                    return display.textContent = num;
-                }
-                return;
-            }
-        }
+    
+        
         // retorna para a variável o número informado pelo usuário
         return Number(display.textContent);
     }
@@ -153,7 +150,7 @@ usando arrow function, o this mantem para o elemento que referenciei inicialment
         }
         if (el.classList.contains('apagar')){
             let num = display.textContent;
-            num = num.substr(0, num.length - 1);
+            num = num.slice(0, -1);
             display.textContent = num;
             if (display.textContent === ''){ return limpaDisplay()};
         }
