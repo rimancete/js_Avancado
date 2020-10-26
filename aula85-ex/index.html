@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- doctype informa ao agente de usuário a versão do html que deve ser renderizada-->
+<html lang="pt-br">
+
+<head>
+    <meta charset='utf-8'>
+    <meta name="author" content="Osvaldo Costa">
+    <meta name="description" content="Página base para estudo e prática de programação JavaScript">
+    <meta name="keywords" content="html5, css, javascript, tecnologia">
+    <title>Curso Javascript Avançado</title>
+    <!--inserindo bootstrap-->
+    <link href="./assets/css/bootstrap.css" rel="stylesheet">
+    <link href="./assets/css/bootstrap-theme.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!--Adicionar código nas tag scripts-->
+
+    <!--Adicionar arquivo javascript-->
+    <!--<script src="qualquer.js"></script>-->
+</head>
+
+<body>
+    <section class="container">
+        <h1>Formulário de cadastro</h1>
+        <ul>
+            <li>Nenhum campo pode estar vazio</li>
+            <li>Usuário só poderá conter letras e números</li>
+            <li>Usuário deverá ter entre 3 e 12 caracteres</li>
+            <li>Senha precisa ter entre 6 e 12 caracteres</li>
+        </ul>
+        <form action="#" method="POST" class="form-control">
+            <label for="nome">Nome</label>
+            <input type="text" class="nome validar" name="nome">
+            <label for="sobrenome">Sobrenome</label>
+            <input type="text" class="sobrenome validar" name="sobrenome">
+            <label for="cpf">CPF</label>
+            <input type="text" class="cpf validar" name="cpf">
+            <label for="user">Usuário</label>
+            <input type="text" class="user validar" name="user">
+            <label for="pass">Senha</label>
+            <input type="password" class="pass validar" name="pass">
+            <label for="nome">Repetir senha</label>
+            <input type="password" class="rpass validar" name="rpass">
+            <button type="submit" class="btn-default enviar" name="enviar">Enviar</button>
+        </form>
+    </section>
+
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>

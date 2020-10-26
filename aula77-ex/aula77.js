@@ -42,6 +42,7 @@ Molde: 11(total de dígitos) - (total2 % 11) = digito 2
     };
     function retornaDigito(digito, cpf) {
          //desmembrando e convertendo em array
+         if (cpf.replace(/\D+/g, '') === '') return console.log('CPF Inválido');
          const cpfLimpo = cpf.replace(/\D+/g, '');
          const cpfArr = Array.from(cpfLimpo);
         //método que verificar se o CPF informado é uma seuência
