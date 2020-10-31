@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- doctype informa ao agente de usuário a versão do html que deve ser renderizada-->
+<html lang="pt-br">
+
+<head>
+    <meta charset='utf-8'>
+    <meta name="author" content="Osvaldo Costa">
+    <meta name="description" content="Página base para estudo e prática de programação JavaScript">
+    <meta name="keywords" content="html5, css, javascript, tecnologia">
+    <title>Curso Javascript Avançado</title>
+    <!--NÃO PRECISAMOS CARREGAR OS CSS pois estão sendo crregados pelo webpack-->
+
+</head>
+
+<body>
+    <section class="container">
+        <form action="#" class="gerador-senha">
+            <h1>Gerador de senhas</h1>
+            <div class="resultado">
+            </div>
+            <h2>Selecione as opções</h2>
+            <p><label for="caracteres">Quantidade de caracteres</label>
+                <input type="number" class="opcao caracteres" name="caracteres" min = 1 max = 20></p>
+
+            <p><label for="numeros">Adicionar números</label>
+                <input type="checkbox" class="opcao numeros" name="numeros"></p>
+
+            <p><label for="maiusculas">Letras maiúsculas</label>
+                <input type="checkbox" class="opcao maiusculas" name="maiusculas"></p>
+
+            <p><label for="minusculas">Letras minúsculas</label>
+                <input type="checkbox" class="opcao minusculas" name="minusculas"></p>
+
+            <p><label for="simbolos">Letras símbolos</label>
+                <input type="checkbox" class="opcao simbolos" name="simbolos"></p>
+            <button type="submit" class="btn-default btnGerar">Gerar senha</button>
+        </form>
+
+    </section>
+
+    <script src="./assets/js/bundle.js"></script>
+</body>
+
+</html>
