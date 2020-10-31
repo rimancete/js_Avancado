@@ -1,0 +1,41 @@
+// CommonJS (padrão do node)
+// pasta 'src' contém o fonte(origem) para o bundle
+// pasta 'public' contém a saída
+// recebendo o módulo 'path'
+const path = require('path');
+
+//exportar um objeto com a configuração do webpack (equivalente ao return)
+module.exports = {
+    //chave 'mode' de saída: development é o padrão. Existe um modo que encurta os códigos de saída
+    mode: 'development',
+    //chave 'entry' para o script de origem
+    entry: './src/index.js',
+    //chave 'output' para o diretório saída => '__dirname' é o diretório atual do projeto
+    output: {
+        //chave 'path' para o diretório
+        path: path.resolve(__dirname, 'public', 'assets', 'js'),
+        // chave 'filename' para o nome do arquivo de saída
+        filename: 'bundle.js'
+    },
+    //utilizando babel para interpretaçãos dos recursos js
+    module: {
+        //definindo regras
+        rules: [{
+            //excluir pasta 'node_modules' pois não há necesside, otimizando o sistema
+            exclude: /node_modules/,
+            //testar qual arquivo será analisado, no caso os *.js
+            test: /\.js$/,
+            use: {
+                //definir o loader, no caso o babel
+                loader: 'babel-loader',
+                // chave 'options' para setar o preset
+                options: {
+                    // no caso o @babel/env
+                    presets: ['@babel/env']
+                }
+            }
+        }]
+    },
+    //mapeando o código do bundle com os arquivos origem, para debbug
+    devtool: 'source-map'
+};
