@@ -1,0 +1,1 @@
+module.exports = (multiplicacao) => multiplicacao % 2;

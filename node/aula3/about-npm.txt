@@ -1,0 +1,15 @@
+versões
+major   minor   patch
+^               ~
+2.      1.      3
+ex:
+movendo express de dependencies para devdependencies => no terminal, 'npm i express --save-dev'
+movendo express de devdependencies para dependecies => no terminal, 'npm i express --save-prod'
+"express": 2.1.0 (no terminal, 'npm i express -E' manterá a versão atual)
+"express": ~2.1.0 (somente será atualizada o patch)
+"express": ^2.1.0 (só não será atualizada o major)
+"express": ^2.1.0 (no terminal, 'npm i express@2.x' atualizará minor o major da major 2)
+'npm update' => atualizará os minors e patch dos pacotes instalados para a versão mais recente
+desinstalar express => npm unistall express
+listar pacotes(sem dependencias) => no terminal, 'npm ls --depth=0'
+verificar por atualizações => 
