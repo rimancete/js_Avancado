@@ -1,0 +1,1 @@
+mongodb+srv://pudico:<password>@jsavancado.wqwnq.mongodb.net/<dbname>?retryWrites=true&w=majority
