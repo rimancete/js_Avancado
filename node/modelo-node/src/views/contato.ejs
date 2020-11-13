@@ -1,0 +1,12 @@
+<%- include('includes/head') %>
+<h1>Formulário de contato</h1>
+<form action="contato" method="POST">
+    <!--Adicionando o token(fazer em todos os formulários-->
+    <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+    <h2>token: <b><%= csrfToken%></b></h2>
+    Nome completo: <input type="text" name="nome">
+    Assunto: <input type="text" name="assunto">
+    Mensagem: <input type="textarea" name="msg">
+    <button>Envia</button>
+</form>
+<%- include('includes/footer') %>

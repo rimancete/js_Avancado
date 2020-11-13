@@ -1,0 +1,22 @@
+<%- include('includes/head'); %>
+<h1 class="text-center">Agenda</h1>
+<p class="text-center lead my-2">
+    <% if(user) {%>
+        <i><span style="font-weight: 600;"><%- user.nome  %></span></i>,  
+    <% } %> 
+     crie ou edite seu contato abaixo</p>
+<%- include('includes/messages')  %>
+<% if(contato._id) {%>
+    <form action="/contato/edit/<%=contato._id  %>" method="post" class="form-control contato">
+<% }else { %>
+    <form action="/contato/cadastro" method="post" class="form-control contato">
+<% } %> 
+    <span class="genErr" hidden></span>
+    <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+    <label for="nome">Nome</label><input type="text" name="nome" class="nome" value="<%= contato.nome %>">
+    <label for="sobrenome">Sobrenome</label><input type="text" name="sobrenome" class="sobrenome" value="<%= contato.sobrenome %>">
+    <label for="cel">Cel</label><input type="tel" name="cel" class="cel" value="<%= contato.cel %>">
+    <label for="email">E-mail</label><input type="email" name="email" class="email" value="<%= contato.email %>">
+    <button class="btn-default">Salvar</button>
+</form>
+<%- include('includes/footer'); %>

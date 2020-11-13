@@ -1,0 +1,29 @@
+<%- include('includes/head'); %>
+<h1 class="text-center">Cadastrar ou Logar</h1>
+<p class="text-center lead my-2">Crie sua conta ou faça login abaixo</p>
+<%- include('includes/messages'); %> 
+<div class="row">
+    <div class="col-lg my-4">
+        <h3>Cadastre-se</h3>
+        <form action="/login/signup" method="post" class="form-control signup">
+            <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+            <label for="email">E-mail</label><input type="email" name="email" class="email">
+            <label for="nome">Nome</label><input type="text" name="nome" class="nome">
+            <label for="sobrenome">Sobrenome</label><input type="text" name="sobrenome" class="sobrenome">
+            <label for="cel">Cel</label><input type="tel" name="cel" class="cel">
+            <label for="pass">Senha</label><input type="password" name="pass" class="pass">
+            <label for="rpass">Repetir Senha</label><input type="password" name="rpass" class="rpass">
+            <button class="btn-default">Cadastrar</button>
+        </form>
+    </div>
+    <div class="col-lg my-4">
+        <h3>Login</h3>
+        <form action="/login/signin" method="post" class="form-control signin">
+            <input type="hidden" name="_csrf" value="<%= csrfToken%>">
+            <label for="email">E-mail</label><input type="email" name="email" class="email">
+            <label for="pass">Senha</label><input type="password" name="pass" class="pass">
+            <button class="btn-default">Login</button>
+        </form>
+    </div>
+</div>
+<%- include('includes/footer'); %>
