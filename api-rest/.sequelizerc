@@ -1,0 +1,9 @@
+// configurações bd
+const { resolve } = require('path');
+module.exports = {
+  config: resolve(__dirname, 'src', 'config', 'database.js'),
+  'models-path': resolve(__dirname, 'src', 'models'),
+  //migrations são alterações no bd. Ex: criar tabela,alterar tabela
+  'migrations-path': resolve(__dirname, 'src', 'database', 'migrations'),
+  'seeders-path': resolve(__dirname, 'src', 'database', 'seeds'),
+};

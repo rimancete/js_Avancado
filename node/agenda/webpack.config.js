@@ -4,6 +4,7 @@ module.exports = {
   mode: 'production',
   entry: './frontend/main.js',
   output: {
+    publicPath: "/public/",
     path: path.resolve(__dirname, 'public', 'assets', 'js'),
     filename: 'bundle.js'
   },
