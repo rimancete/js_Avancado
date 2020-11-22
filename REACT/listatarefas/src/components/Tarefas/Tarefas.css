@@ -1,0 +1,32 @@
+.tarefas{
+  margin-top: 30px;
+}
+.tarefas li{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+}
+.tarefas li span{
+  display: flex;
+  align-items: center;
+}
+.tarefas li:hover{
+  background: #60c5da ;
+}
+.editTask, .delTask{
+margin-right: 10px;
+transition: all 0.3s;
+}
+.editTask{
+  color: #1c6d80;
+}
+.delTask{
+color: #ad2d2d;
+}
+.tarefas li:hover .delTask, .tarefas li:hover .editTask{
+  color: black;
+}

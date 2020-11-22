@@ -23,7 +23,7 @@ export default class Photo extends Model {
           },
         },
       },
-      // setar url para acesso à imagem
+      // setar url para acesso à arquivos estáticos (imagem)
       url: {
         type: Sequelize.VIRTUAL,
         get() {
