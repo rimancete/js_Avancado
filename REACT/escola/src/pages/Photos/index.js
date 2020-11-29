@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from '../../styles/GlobalStyles';
 
-export default function Login() {
+export default function Fotos() {
   // executar ações quando componente é montado(iniciado)
   // React.useEffect(() => {
   //   async function getData() {
@@ -15,7 +15,7 @@ export default function Login() {
 
   return (
     <Container>
-      <h1>Login</h1>
+      <h1>Fotos</h1>
     </Container>
   );
 }

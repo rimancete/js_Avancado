@@ -55,7 +55,7 @@ ul{
 `;
 
 export const Container = styled.section`
-  max-width: 70%;
+  max-width: 90%;
   background: #fff;
   margin: 30px auto;
   padding: 30px;
