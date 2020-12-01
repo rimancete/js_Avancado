@@ -6,11 +6,11 @@ export default (reducers) => {
   const persistedReducers = persistReducer(
     {
       // nome da aplicação
-      key: 'REAT-BASE',
+      key: 'ESCOLA',
       // local de armazenamento
       storage,
       // modulos que queremos salvar => inserir do rootReducer
-      whitelist: ['example'],
+      whitelist: ['auth'],
     },
     reducers
   );

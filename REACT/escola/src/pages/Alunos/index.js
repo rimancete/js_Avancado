@@ -41,10 +41,10 @@ export default function Alunos() {
             <span>{aluno.email}</span>
             {/* Inserindo link para edição e exclusão de alunos */}
             <Link to={`/aluno/${aluno.id}/edit`}>
-              <FaEdit size={10} />
+              <FaEdit size={20} />
             </Link>
             <Link to={`/aluno/${aluno.id}/delete`}>
-              <FaWindowClose size={10} />
+              <FaWindowClose size={20} />
             </Link>
           </div>
         ))}

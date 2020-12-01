@@ -10,4 +10,7 @@ export const Nav = styled.nav`
     color: #fff;
     margin: 0 0 0 15px;
   }
+  .isLoggedIn {
+    margin: 0 0 0 15px;
+  }
 `;
