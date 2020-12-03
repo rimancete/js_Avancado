@@ -7,5 +7,16 @@ Saga(Middleware de direcionamento de actions Redux)
 Persist (Armazenamento de estados)
 
 - MELHORIAS
- Meu Lista de alunos isClosed
-Quando logado, se o usuário criar um novo usuário com sucesso, além de direcionar para login, deve deslogar o usuário atual
+(routes/index)* Minha Lista de alunos isClosed na api e na aplicação
+(store/modules/auth/reducer)* Ao atualizar dados, Chequei se o e-mail informado é diferente do armazenado, se sim, atualizo-o e deslogo o usuário e removo o link para home da nav.
+[{routes/index}, {routes/myRoute}]* Na home(onde listamos os alunos), se o usuário não estiver logado, ele é direcionado para a rota login e o link para a home, no nav, não é exibido.
+(pages/Login)*Após logado, o usuário será redirecionado diretamente para a lista de alunos e o link para home no nav volta a ser exibido.
+
+* 2 Estilizar componente Loading
+* 4 Ajustar responsividade
+* 6 Tentar inserir modal no lugar da dupla confirmação
+* 5 Tentar atualizar lista de alunos de tempos em tempos
+* 7 Fazer galeria de imagens
+* 3 Para fotos, permitir somente envio de imagens (front-end)
+
+* 1 Fazer deleção de usuário

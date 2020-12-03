@@ -31,9 +31,11 @@ export default function Header() {
   };
   return (
     <Nav>
-      <Link to="/">
-        <FaHome size={20} />
-      </Link>
+      {isLoggedIn && (
+        <Link to="/">
+          <FaHome size={20} />
+        </Link>
+      )}
 
       <Link to="/register">
         <FaSignInAlt size={20} />

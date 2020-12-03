@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+// componente link usado para criação de novo aluno na página 'ALunos'
+import { Link } from 'react-router-dom';
 
 export const AlunoContainer = styled.div`
   margin-top: 20px;
@@ -11,13 +13,21 @@ export const AlunoContainer = styled.div`
   }
   /*Inserindo borda para separar cada aluno, retirando do primeiro */
   div + div {
-    border-top: 1px solid #fff;
+    border-top: 1px solid #eee;
   }
 `;
 export const ProfilePicture = styled.div`
   img {
-    width: 36px;
-    height: 36px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
   }
+`;
+
+// Componente react (Link) da página 'Alunos'
+export const NovoAluno = styled(Link)`
+  display: block;
+  padding: 5px 0;
+  text-align: right;
+  font-weight: 550;
 `;

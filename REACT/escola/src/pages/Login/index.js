@@ -1,21 +1,30 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
-// importando componentes redux para comunicação com API
-import { useDispatch } from 'react-redux';
+// importando componentes redux para comunicação com API e loading da página
+import { useDispatch, useSelector } from 'react-redux';
 import { get } from 'lodash';
 import * as actions from '../../store/modules/auth/actions';
+
+// importando componente de loading da página
+import Loading from '../../components/Loading';
 
 import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
 
 export default function Login(props) {
+  // definindo estado isLoading da página
+
   // criando varíaveis de estado
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // criando dispatch (disparador de ações) redux e variável que recebe a página anterior ao login
   const dispatch = useDispatch();
   const prevPath = get(props, 'location.state.prevPath', '/');
+
+  // criando e setando o isLoading da página
+  const isLoading = useSelector((state) => state.auth.isLoading);
+
   // Criando função que valida front-end e envia os dados para API
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,6 +45,7 @@ export default function Login(props) {
   };
   return (
     <Container>
+      <Loading isLoading={isLoading} />
       <h1>Login</h1>
       <Form onSubmit={handleSubmit}>
         <label htmlFor="email">

@@ -51,6 +51,9 @@ ul{
 .toast-container .Toastify__toast--error{
   background: ${colors.errorColor};
 }
+.toast-container .Toastify__toast--info{
+  background: ${colors.infoColor};
+}
 
 `;
 

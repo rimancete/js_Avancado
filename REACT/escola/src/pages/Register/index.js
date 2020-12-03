@@ -2,20 +2,42 @@ import React, { useState } from 'react';
 // importar componentes de validação
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
-import { get } from 'lodash';
 
-// importar axios para comunicação com API e history para direcionamento de rota da aplicação
-import axios from '../../services/axios';
-import history from '../../services/history';
+// API
+// importar axios para comunicação com API e dispatch para direcionamento de rota da aplicação
+import { useSelector, useDispatch } from 'react-redux';
+// importar actions redux
+import * as actions from '../../store/modules/auth/actions';
 
+// LOADING
+import Loading from '../../components/Loading';
+
+// STYLES
 import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
 
 export default function Register() {
+  // coletando dados, selecionados, do usuário logado
+  const id = useSelector((state) => state.auth.user.id);
+  const nomeStored = useSelector((state) => state.auth.user.nome);
+  const emailStored = useSelector((state) => state.auth.user.email);
+  // importando estado isLoading
+  const isLoading = useSelector((state) => state.auth.isLoading);
   // criando varíveis de estado
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  // criando disparador redux que chamará o saga para seguir com as validações no back-end
+  const dispatch = useDispatch();
+
+  // se usuário estiver logado, preencha os estados (inputs)
+  React.useEffect(() => {
+    if (!id) return;
+    setNome(nomeStored);
+    setEmail(emailStored);
+  }, [emailStored, id, nomeStored]);
+
   // Criando função que valida front-end e envia os dados para API
   async function handleSubmit(e) {
     e.preventDefault();
@@ -28,33 +50,23 @@ export default function Register() {
       formErrors = true;
       toast.error('Email inválido');
     }
-    if (password.length < 6 || password.length > 20) {
+    if (!id && (password.length < 6 || password.length > 20)) {
       formErrors = true;
       toast.error('A senha deve ter entre 6 e 20 caracteres');
     }
 
     // salvando dados na API
     if (formErrors) return;
-    try {
-      // como não foi utilizada response, o axios foi chamado diretamente
-      await axios.post('/users/', {
-        nome,
-        password,
-        email,
-      });
-      toast.success('Usuário criado com sucesso');
-      history.push('/login');
-    } catch (err) {
-      // identificar e retornar o(s) erro(s) da API no back-end
-      // const status = get(err, 'response.status', 0);
-      const errors = get(err, 'response.data.errors', []);
-      errors.map((error) => toast.error(error));
-    }
+
+    // disparar ação redux para action
+    dispatch(actions.registerRequest({ nome, email, password, id }));
   }
 
   return (
     <Container>
-      <h1>Crie sua conta</h1>
+      <Loading isLoading={isLoading} />
+
+      <h1>{id ? `Editar dados` : `Crie sua conta`}</h1>
       <Form onSubmit={handleSubmit}>
         <label htmlFor="nome">
           Nome Completo:
@@ -89,7 +101,7 @@ export default function Register() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <button type="submit">Criar Conta</button>
+        <button type="submit">{id ? `Salvar Dados` : `Criar Conta`}</button>
       </Form>
     </Container>
   );
