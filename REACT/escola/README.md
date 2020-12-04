@@ -12,11 +12,14 @@ Persist (Armazenamento de estados)
 [{routes/index}, {routes/myRoute}]* Na home(onde listamos os alunos), se o usuário não estiver logado, ele é direcionado para a rota login e o link para a home, no nav, não é exibido.
 (pages/Login)*Após logado, o usuário será redirecionado diretamente para a lista de alunos e o link para home no nav volta a ser exibido.
 
-* 2 Estilizar componente Loading
-* 4 Ajustar responsividade
+* 2 Estilizar componente Loading OK
+* 4 Ajustar responsividade OK
 * 6 Tentar inserir modal no lugar da dupla confirmação
 * 5 Tentar atualizar lista de alunos de tempos em tempos
 * 7 Fazer galeria de imagens
-* 3 Para fotos, permitir somente envio de imagens (front-end)
+* 3 Para fotos, customizado input file para que, no padrão, o usuário veja imagens ao localizar arquivos. Caso ocorra problema com o envio da imagem, é exibido erro e retorna a página de edição do aluno OK
 
-* 1 Fazer deleção de usuário
+* 1 Fazer deleção de usuário OK
+
+MELHORIA FUTURA
+- Assim que clicar na câmera já selecionar imagem(excluir página Photo)

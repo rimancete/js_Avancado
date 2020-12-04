@@ -1,7 +1,9 @@
 import React from 'react';
+import { LoopCircleLoading } from 'react-loadingg';
 // componente para saber se a página está carregando ou não
 import PropTypes from 'prop-types';
 import { Container } from './styled';
+import * as colors from '../../config/colors';
 
 export default function Loading({ isLoading }) {
   // se não tiver carregando retorna fragmento vazio
@@ -9,8 +11,9 @@ export default function Loading({ isLoading }) {
   // retorna o loading da página
   return (
     <Container>
-      <div />
-      <span>Carregando...</span>
+      <span>
+        <LoopCircleLoading size="large" color={colors.primaryColor} />
+      </span>
     </Container>
   );
 }

@@ -58,6 +58,48 @@ ul{
 `;
 
 export const Container = styled.section`
+  @media (max-width: 500px) {
+    padding: 10px;
+    max-width: 95%;
+    span {
+      font-size: 0.8em;
+    }
+    label {
+      font-size: 0.8em;
+    }
+    h1 {
+      font-size: 1.4em;
+    }
+    input {
+      font-size: 1.2em;
+      &::placeholder {
+        font-size: 0.9em;
+      }
+    }
+  }
+  @media (min-width: 780px) {
+    width: 680px;
+  }
+  @media (min-width: 1024px) {
+    width: 850px;
+    span {
+      font-size: 1.2em;
+    }
+    label {
+      font-size: 1.1em;
+    }
+
+    h1 {
+      font-size: 1.8em;
+    }
+    input {
+      font-size: 1.25em;
+      &::placeholder {
+        font-size: 1em;
+      }
+    }
+  }
+
   max-width: 90%;
   background: #fff;
   margin: 30px auto;
