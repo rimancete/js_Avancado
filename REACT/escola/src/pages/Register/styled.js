@@ -1,5 +1,8 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import * as colors from '../../config/colors';
+
+// componente link usado para criação de novo aluno na página 'ALunos'
 
 export const Form = styled.form`
   margin: 20px 0;
@@ -22,5 +25,18 @@ export const Form = styled.form`
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
+  }
+`;
+
+export const ExcluirPerfil = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  text-align: center;
+  font-weight: 550;
+  p {
+    margin-right: 5px;
+    font-size: 13.5px;
   }
 `;

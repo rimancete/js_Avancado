@@ -77,8 +77,6 @@ export default function Alunos() {
         Cadastrar Aluno <FaFileAlt size={22} />
       </NovoAluno>
       <h1>Alunos</h1>
-      {/* Link para criação de novo aluno */}
-
       {/* exibindo dados da api na página */}
       <AlunoContainer>
         {alunos.map((aluno, index) => (
@@ -88,7 +86,7 @@ export default function Alunos() {
               {get(aluno, 'Photos[0].url', false) ? (
                 <img src={aluno.Photos[0].url} alt="" />
               ) : (
-                <FaUserCircle size={50} />
+                <FaUserCircle className="within-pic" size={50} />
               )}
             </ProfilePicture>
             {/* Coletando dados da api */}

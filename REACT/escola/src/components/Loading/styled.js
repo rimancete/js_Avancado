@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 // configurando o container e a div inferior para ocupar toda a tela e deixá-la escurecida
 export const Container = styled.div`
   position: absolute;
@@ -13,15 +14,12 @@ export const Container = styled.div`
   color: #fff;
   font-size: 30px;
 
-  div {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background: rgba(0, 0, 0, 0.65);
-  }
   /*colocando o texto carregando na frente da div */
   span {
+    position: absolute;
     z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
   }
 `;

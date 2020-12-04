@@ -64,8 +64,9 @@ export default function Photos({ match }) {
       setIsLoading(false);
       const status = get(err, 'response', '');
 
-      toast.error('Erro ao enviar foto');
+      toast.error('Erro ao enviar foto. Tente novamente');
       if (status === 401) dispatch(actions.loginFailure());
+      history.push(`/aluno/${id}/edit`);
     }
   };
 
@@ -76,7 +77,12 @@ export default function Photos({ match }) {
       <Form>
         <label htmlFor="photo">
           {photo ? <img src={photo} alt="Foto" /> : 'Selecionar'}
-          <input type="file" id="photo" onChange={handleChange} />
+          <input
+            type="file"
+            id="photo"
+            accept="image/png, image/jpeg"
+            onChange={handleChange}
+          />
         </label>
       </Form>
     </Container>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 // importar componentes de validação
+
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
 
@@ -9,24 +10,39 @@ import { useSelector, useDispatch } from 'react-redux';
 // importar actions redux
 import * as actions from '../../store/modules/auth/actions';
 
+// importando componentes para consumo da api
+import axios from '../../services/axios';
+import history from '../../services/history';
+
 // LOADING
 import Loading from '../../components/Loading';
 
 // STYLES
 import { Container } from '../../styles/GlobalStyles';
-import { Form } from './styled';
+import { Form, ExcluirPerfil } from './styled';
+
+// DIALOG
+import AlertDialog from '../../components/Dialog';
 
 export default function Register() {
   // coletando dados, selecionados, do usuário logado
   const id = useSelector((state) => state.auth.user.id);
   const nomeStored = useSelector((state) => state.auth.user.nome);
   const emailStored = useSelector((state) => state.auth.user.email);
-  // importando estado isLoading
-  const isLoading = useSelector((state) => state.auth.isLoading);
   // criando varíveis de estado
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  // definindo estado isLoading da página
+  const [isLoading, setIsLoading] = useState(false);
+
+  // DIALOG
+  const [dialogIsOpen, setDialogIsOpen] = useState(false);
+
+  const openDialog = () => setDialogIsOpen(true);
+
+  const closeDialog = () => setDialogIsOpen(false);
 
   // criando disparador redux que chamará o saga para seguir com as validações no back-end
   const dispatch = useDispatch();
@@ -61,6 +77,24 @@ export default function Register() {
     // disparar ação redux para action
     dispatch(actions.registerRequest({ nome, email, password, id }));
   }
+
+  const handleDelete = async () => {
+    // e.preventDefault();
+    try {
+      //
+      setIsLoading(true);
+      await axios.delete(`/users/`);
+
+      dispatch(actions.loginFailure());
+      history.push('/login');
+      setIsLoading(false);
+      toast.success('Seu perfil foi excluído com sucesso');
+    } catch (err) {
+      //
+      toast.error('Erro desconhecido');
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Container>
@@ -102,6 +136,22 @@ export default function Register() {
           />
         </label>
         <button type="submit">{id ? `Salvar Dados` : `Criar Conta`}</button>
+        {id && (
+          <ExcluirPerfil onClick={() => setDialogIsOpen(true)} to="/register">
+            <AlertDialog
+              btnText="Excluir perfil"
+              title="Deseja realmente excluir seu perfil?"
+              // eslint-disable-next-line react/no-children-prop
+              children="Após excluir seu perfil, você perderá o acesso imediatamente. Se
+                quiser usar o sistema novamente, uma nova conta precisará ser
+                criada."
+              open={dialogIsOpen}
+              setOpen={openDialog}
+              onConfirm={handleDelete}
+              onClose={closeDialog}
+            />
+          </ExcluirPerfil>
+        )}
       </Form>
     </Container>
   );

@@ -44,7 +44,7 @@ export const ProfilePicture = styled.div`
     border: none;
     position: absolute;
     bottom: 15px;
-    right: 100px;
+    left: 52%;
     color: #fff;
     background: ${colors.primaryDarkColor};
     width: 40px;
