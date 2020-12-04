@@ -4,13 +4,7 @@ import { Link } from 'react-router-dom';
 // importando lodash => tratamento excessão
 import { get } from 'lodash';
 // importando ícones que serão exibidos no lugar de fotos inexistentes de alunos
-import {
-  FaUserCircle,
-  FaEdit,
-  FaWindowClose,
-  FaExclamation,
-  FaFileAlt,
-} from 'react-icons/fa';
+import { FaUserCircle, FaEdit, FaFileAlt } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import { Container } from '../../styles/GlobalStyles';
 import { AlunoContainer, ProfilePicture, NovoAluno } from './styled';
@@ -20,11 +14,20 @@ import axios from '../../services/axios';
 // importando componente de loading da página
 import Loading from '../../components/Loading';
 
+// DIALOG
+import AlertDialog from '../../components/Dialog';
+
 export default function Alunos() {
   // definindo estado isLoading da página
   const [isLoading, setIsLoading] = useState(false);
   // definindo os estados, dados(api) e forma de manipulação
   const [alunos, setAlunos] = useState([]);
+
+  // DIALOG
+  const [dialogIsOpen, setDialogIsOpen] = useState(false);
+  const openDialog = () => setDialogIsOpen(true);
+  const closeDialog = () => setDialogIsOpen(false);
+
   React.useEffect(() => {
     async function getData() {
       // antes de comunicar com api, informar o loading
@@ -38,14 +41,6 @@ export default function Alunos() {
     }
     getData();
   }, []);
-
-  // criando função que pergunta se o usuário quer mesmo deletar o registro do aluno
-  const handleDeleteAsk = (e) => {
-    e.preventDefault();
-    const exclamation = e.currentTarget.nextSibling;
-    exclamation.setAttribute('display', 'block');
-    e.currentTarget.remove();
-  };
 
   // criando função que realiza a exclusão do aluno
   const handleDelete = async (e, id, index) => {
@@ -96,16 +91,17 @@ export default function Alunos() {
             <Link to={`/aluno/${aluno.id}/edit`}>
               <FaEdit size={24} />
             </Link>
-            <Link onClick={handleDeleteAsk} to={`/aluno/${aluno.id}/delete`}>
-              <FaWindowClose size={24} />
+            <Link onClick={() => setDialogIsOpen(true)} to="/">
+              <AlertDialog
+                title="Deseja realmente deletar o aluno selecionado?"
+                // eslint-disable-next-line react/no-children-prop
+                children="Após exclusão, todos os dados do aluno serão excluídos definitivamente."
+                open={dialogIsOpen}
+                setOpen={openDialog}
+                onConfirm={(e) => handleDelete(e, aluno.id, index)}
+                onClose={closeDialog}
+              />
             </Link>
-
-            <FaExclamation
-              size={24}
-              display="none"
-              cursor="pointer"
-              onClick={(e) => handleDelete(e, aluno.id, index)}
-            />
           </div>
         ))}
       </AlunoContainer>

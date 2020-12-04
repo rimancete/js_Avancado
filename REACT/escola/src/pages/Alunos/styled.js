@@ -10,6 +10,11 @@ export const AlunoContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 5px 0;
+    a {
+      margin: 0;
+      position: relative;
+      bottom: 5px;
+    }
   }
   /*Inserindo borda para separar cada aluno, retirando do primeiro */
   div + div {

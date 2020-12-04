@@ -39,9 +39,7 @@ export default function Register() {
 
   // DIALOG
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
-
   const openDialog = () => setDialogIsOpen(true);
-
   const closeDialog = () => setDialogIsOpen(false);
 
   // criando disparador redux que chamará o saga para seguir com as validações no back-end
