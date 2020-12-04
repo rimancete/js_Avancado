@@ -1,25 +1,28 @@
-ação -> reducer -> newState
-ação (request) -> saga > reducer -> sucess/fail
+Versão final do projeto Alunos
+- MELHORIAS IMPLEMENTADAS
+- Lista de alunos somente acessível para usuários logados
+- Ao atualizar dados de usuário, caso o o e-mail informado for atualizado e a alteração for concluída com sucesso, o sistema deslogará o usuário, solicitando ao mesmo que refaça o login.
+- Deleção de usuário
+- Estilizado componente Loading
+- Ajustado responsividade
+- Dupla confirmação substituída por Dialog
+- Input file pré-setado para exibir apenas imagens ao usuário.
+- Caso apresente erro ao enviar a imagem, o usuário será redirecionado para a rota de edição do aluno que falhou o envio da imagem
 
-Toastify (mensageiro)
-Redux(manipulação de estado)
-Saga(Middleware de direcionamento de actions Redux)
-Persist (Armazenamento de estados)
 
-- MELHORIAS
-(routes/index)* Minha Lista de alunos isClosed na api e na aplicação
-(store/modules/auth/reducer)* Ao atualizar dados, Chequei se o e-mail informado é diferente do armazenado, se sim, atualizo-o e deslogo o usuário e removo o link para home da nav.
-[{routes/index}, {routes/myRoute}]* Na home(onde listamos os alunos), se o usuário não estiver logado, ele é direcionado para a rota login e o link para a home, no nav, não é exibido.
-(pages/Login)*Após logado, o usuário será redirecionado diretamente para a lista de alunos e o link para home no nav volta a ser exibido.
+Notas:
+- Na home(onde listamos os alunos), se o usuário não estiver logado, ele é direcionado para a rota login e o link para a home, no nav, não é exibido.
+- Após logado, o usuário será redirecionado diretamente para a lista de alunos e o link para home no nav volta a ser exibido.
+-  Para fotos, customizado input file para que, no padrão, o usuário veja somentes imagens ao localizar arquivos. Caso ocorra problema com o envio da imagem, é exibido erro e retornado a página de edição do aluno
 
-* 2 Estilizar componente Loading OK
-* 4 Ajustar responsividade OK
-* 6 Tentar inserir modal no lugar da dupla confirmação
-* 5 Tentar atualizar lista de alunos de tempos em tempos
-* 7 Fazer galeria de imagens
-* 3 Para fotos, customizado input file para que, no padrão, o usuário veja imagens ao localizar arquivos. Caso ocorra problema com o envio da imagem, é exibido erro e retorna a página de edição do aluno OK
+CORREÇÃO FUTURA:
+Warnings nas rotas /alunos, /aluno e /register
+1 - prop 'to' de Link é requerido mas está undefined
+2 - link dentro de link
 
-* 1 Fazer deleção de usuário OK
 
-MELHORIA FUTURA
+MELHORIA FUTURA PROPOSTA
 - Assim que clicar na câmera já selecionar imagem(excluir página Photo)
+- Enquanto página de alunos estiver sendo exibida, atualizar lista de alunos de tempos em tempos
+- Fazer galeria de imagens para aluno
+

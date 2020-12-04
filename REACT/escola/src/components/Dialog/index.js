@@ -47,9 +47,9 @@ export default function AlertDialog(props) {
             Cancelar
           </Button>
           <Button
-            onClick={() => {
+            onClick={(e) => {
               setOpen(false);
-              onConfirm();
+              onConfirm(e);
             }}
             color="primary"
             autoFocus
@@ -61,10 +61,14 @@ export default function AlertDialog(props) {
     </div>
   );
 }
+// indicando que o valor padrão para btnText a rota é ""
+AlertDialog.defaultProps = {
+  btnText: '',
+};
 
 AlertDialog.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
-  btnText: PropTypes.string.isRequired,
-  onConfirm: PropTypes.shape({}).isRequired,
+  btnText: PropTypes.string,
+  onConfirm: PropTypes.func.isRequired,
 };

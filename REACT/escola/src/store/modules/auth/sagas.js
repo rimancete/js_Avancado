@@ -84,7 +84,6 @@ function* registerRequest({ payload }) {
       errors.map((error) => toast.error(error));
       // se não, informe o usuário de um erro desconhecido
     } else {
-      console.log(e);
       toast.error('Erro desconhecido');
     }
     yield put(actions.registerFailure());
